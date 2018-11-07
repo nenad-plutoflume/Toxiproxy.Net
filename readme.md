@@ -6,15 +6,13 @@ Toxiproxy.Net is a .Net client for Shopify's [Toxiproxy](https://github.com/shop
 
 Project
 
-[![Build status](https://ci.appveyor.com/api/projects/status/82gfuh999hq15sgo?svg=true)](https://ci.appveyor.com/project/mdevilliers/toxiproxy-net)
+[![Build status](https://ci.appveyor.com/api/projects/status/y6hj8h6x2po0o9rp?svg=true)](https://ci.appveyor.com/project/nenad-plutoflume/toxiproxy-net)
 
 Master branch
 
-[![Build status](https://ci.appveyor.com/api/projects/status/82gfuh999hq15sgo/branch/master?svg=true)](https://ci.appveyor.com/project/mdevilliers/toxiproxy-net/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/y6hj8h6x2po0o9rp/branch/master?svg=true)](https://ci.appveyor.com/project/nenad-plutoflume/toxiproxy-net/branch/master)
 
-Test Coverage
-
-[![Coverage Status](https://coveralls.io/repos/mdevilliers/Toxiproxy.Net/badge.svg?branch=master)](https://coveralls.io/r/mdevilliers/Toxiproxy.Net?branch=master)
+[//]: # (Test Coverage)
 
 Getting started
 ---------------
