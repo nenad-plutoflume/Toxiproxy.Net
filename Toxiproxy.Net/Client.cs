@@ -28,7 +28,7 @@ namespace Toxiproxy.Net
                 var response = httpClient.GetAsync("/proxies").Result;
                 CheckIsSuccessStatusCode(response);
 
-                var result = response.Content.ReadAsAsync<Dictionary<string, Proxy>>().Result;
+                var result = JsonConvert.DeserializeObject<Dictionary<string, Proxy>>(response.Content.ReadAsStringAsync().Result);
 
                 foreach (var proxy in result.Values)
                 {
@@ -68,10 +68,12 @@ namespace Toxiproxy.Net
 
             using (var httpClient = _clientFactory.Create())
             {
-                var response = httpClient.PostAsJsonAsync("/proxies", proxy).Result;
+                var content = new StringContent(JsonConvert.SerializeObject(proxy));
+
+                var response = httpClient.PostAsync("/proxies", content).Result;
                 CheckIsSuccessStatusCode(response);
 
-                var newProxy = response.Content.ReadAsAsync<Proxy>().Result;
+                var newProxy = JsonConvert.DeserializeObject<Proxy>(response.Content.ReadAsStringAsync().Result);
 
                 newProxy.Client = this;
 
@@ -95,11 +97,14 @@ namespace Toxiproxy.Net
             using (var httpClient = _clientFactory.Create())
             {
                 var url = string.Format("/proxies/{0}", proxy.Name);
-                var response = httpClient.PostAsJsonAsync(url, proxy).Result;
+
+                var content = new StringContent(JsonConvert.SerializeObject(proxy));
+
+                var response = httpClient.PostAsync(url, content).Result;
 
                 CheckIsSuccessStatusCode(response);
 
-                var newProxy = response.Content.ReadAsAsync<Proxy>().Result;
+                var newProxy = JsonConvert.DeserializeObject<Proxy>(response.Content.ReadAsStringAsync().Result);
 
                 newProxy.Client = this;
 
@@ -127,7 +132,7 @@ namespace Toxiproxy.Net
 
                 CheckIsSuccessStatusCode(response);
 
-                var proxy = response.Content.ReadAsAsync<Proxy>().Result;
+                var proxy = JsonConvert.DeserializeObject<Proxy>(response.Content.ReadAsStringAsync().Result);
 
                 proxy.Client = this;
 
